@@ -15,4 +15,7 @@ const head='<!doctype html>\n<html lang="zh-Hant">\n<head>\n<meta charset="utf-8
  +'<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%E2%9C%88%EF%B8%8F%3C/text%3E%3C/svg%3E">\n'
  +'<style>body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>\n';
 fs.writeFileSync('dist/index.html',head+page.slice(0,cut)+'\n</head>\n<body>\n'+page.slice(cut)+'\n</body>\n</html>\n');
+// 開場動畫（影片用）：story.html
+const storyJs=['fold-engine.js','planes.js','story.js'].map(f=>fs.readFileSync('src/'+f,'utf8').replace(/^if \(typeof module.*$/m,'')).join('\n');
+fs.writeFileSync('dist/story.html',fs.readFileSync('src/story.html','utf8').replace('<!--ENGINE-->','<script>\n'+storyJs+'\n</script>'));
 console.log('ok', page.length);

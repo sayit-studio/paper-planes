@@ -25,6 +25,7 @@ node build.js
 - `index.html`：網站版（Cloudflare Pages 用）
 - `paper-planes.html`：Claude Artifact 版
 - `preview.html`：本機預覽用
+- `story.html`：影片用 3D 開場動畫（直式 9:16，約 21 秒）
 
 本機預覽：`python -m http.server 8765 --directory dist`，開 http://localhost:8765/
 

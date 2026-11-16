@@ -58,6 +58,13 @@
 - [x] 加 .gitignore（忽略 dist/）、README（建置與部署設定）
 - [x] 清掉 patch2～7.py
 - [x] 手機尺寸、深色模式驗證，無 console 錯誤
-- [ ] 推上 GitHub（使用者操作）
+- [x] 推上 GitHub：https://github.com/sayit-studio/paper-planes（public）
 - [ ] Cloudflare Pages 連 repo：Build command `node build.js`、Output `dist`
 - [ ] 上線後用 Chrome 開公開網址確認不再轉圈
+
+## v8 影片開場動畫（story.html）
+- [x] src/story.html + src/story.js：Q 版叔叔、姪子，大翅膀滑翔機（摺紙引擎真形狀）
+- [x] 4 幕 21 秒：平頭飛機 → 同學教的 → 不會迴轉 → 一起搞懂（網站畫面由使用者自己錄，不做平板與結尾卡）
+- [x] 可拖時間軸、跳幕、關對話框；播放時按鈕自動藏起來方便錄影
+- [x] build.js 輸出 dist/story.html，手機直式逐幕截圖驗證，無 console 錯誤
+- [ ] 使用者錄旁白後，依旁白長度微調各幕秒數

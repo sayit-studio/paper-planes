@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>紙飛機小學堂｜開場動畫</title>
+<meta name="description" content="為什麼紙飛機要平頭？叔叔和姪子的 3D 開場動畫。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@500;700&display=swap">
+<style>
+/* 開場動畫：直式 9:16，錄影用。播放時按鈕自動藏起來。 */
+:root {
+  --bg: #fbf5e6; --ink: #2b2a3d; --edge: #2b2a3d; --surface: #fffdf6; --muted: #6b6577; --accent: #ffc93c; --pink: #ff8fa3; --green: #2e9e7a;
+  --f-display: "Huninn", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: #e7dfca; color: var(--ink); font-family: var(--f-display); display: flex; align-items: center; justify-content: center; min-height: 100vh; min-height: 100dvh; overflow: hidden; }
+#frame { position: relative; width: min(100vw, calc(100vh * 9 / 16)); width: min(100vw, calc(100dvh * 9 / 16)); aspect-ratio: 9 / 16; overflow: hidden; background: var(--bg); user-select: none; -webkit-user-select: none; }
+#gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#bubbles { position: absolute; inset: 0; pointer-events: none; font-size: 20px; }
+.bubble { position: absolute; left: 0; top: 0; max-width: 88%; text-wrap: balance; width: max-content; padding: .42em .8em .5em; background: var(--surface); border: 3px solid var(--edge); border-radius: 20px 17px 20px 16px; box-shadow: 0 4px 0 var(--edge); text-align: center; line-height: 1.35; opacity: 0; transform: translate(-50%, -100%) scale(.55); transform-origin: 50% 100%; }
+.bubble .who { display: block; font-size: .6em; color: var(--muted); line-height: 1.3; }
+.bubble::after { content: ""; position: absolute; left: calc(50% + var(--tx, 0px)); bottom: -11px; width: 16px; height: 16px; background: var(--surface); border-right: 3px solid var(--edge); border-bottom: 3px solid var(--edge); transform: translateX(-50%) rotate(45deg); }
+.bubble.notail::after { display: none; }
+.bubble.kid { background: #fff4cf; }
+.bubble.kid::after { background: #fff4cf; }
+.bubble.shout { font-size: 1.25em; background: #ffe9a8; padding: .38em .7em .45em; }
+.bubble.shout::after { background: #ffe9a8; }
+#ctrl { position: absolute; left: 10px; right: 10px; bottom: 10px; display: flex; flex-direction: column; gap: 8px; padding: 10px; background: rgb(255 253 246 / .94); border: 3px solid var(--edge); border-radius: 16px; box-shadow: 0 4px 0 var(--edge); font-size: 15px; }
+body.rec #ctrl { display: none; }
+.row { display: flex; align-items: center; gap: 8px; }
+.btn { font: inherit; color: var(--ink); background: var(--surface); border: 2.5px solid var(--edge); border-radius: 12px; box-shadow: 0 3px 0 var(--edge); min-height: 40px; padding: 4px 12px; cursor: pointer; }
+.btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--edge); }
+.btn.primary { background: var(--accent); flex: 0 0 auto; font-size: 17px; }
+.btn:focus-visible, input:focus-visible { outline: 3px solid #2f7fd1; outline-offset: 2px; }
+.chips { display: flex; gap: 6px; flex: 1 1 auto; overflow-x: auto; }
+.chips .btn { min-height: 36px; padding: 2px 9px; font-size: 13px; white-space: nowrap; }
+.chips .btn[aria-pressed="true"] { background: #bfe6d8; }
+#scrub { flex: 1 1 auto; accent-color: var(--green); }
+#time { flex: 0 0 4.2em; text-align: right; font-variant-numeric: tabular-nums; }
+.small { font-size: 12.5px; color: var(--muted); gap: 12px; flex-wrap: wrap; }
+.small label { display: inline-flex; align-items: center; gap: 4px; color: var(--ink); }
+</style>
+</head>
+<body>
+<div id="frame">
+  <canvas id="gl" aria-label="3D 開場動畫：叔叔和姪子討論為什麼紙飛機要平頭"></canvas>
+  <div id="bubbles"></div>
+  <div id="ctrl">
+    <div class="row"><button class="btn primary" id="play">▶ 播放</button><div class="chips" id="chips"></div></div>
+    <div class="row"><input type="range" id="scrub" min="0" max="21" step="0.05" value="0" aria-label="時間"><span id="time">0.0 秒</span></div>
+    <div class="row small"><label><input type="checkbox" id="showBubbles" checked> 對話框</label><span>按播放後按鈕會藏起來，點畫面可以暫停</span></div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!--ENGINE-->
+</body>
+</html>

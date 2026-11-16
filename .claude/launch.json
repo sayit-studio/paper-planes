@@ -4,8 +4,14 @@
     {
       "name": "paper-planes",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "dist"],
+      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "D:/dev/paper-planes/dist"],
       "port": 8765
+    },
+    {
+      "name": "paper-planes-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8766", "--directory", "D:/dev/paper-planes/dist"],
+      "port": 8766
     }
   ]
 }
